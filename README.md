@@ -22,6 +22,14 @@ uv run python pcap_analyzer.py <pcap_file>
 
 ## Usage
 
+First, capture TCP reset packets using tcpdump:
+
+```bash
+tcpdump -i enp0s31f6 'tcp[tcpflags] & tcp-rst != 0' -w rst_packets.pcap
+```
+
+Then analyze the captured PCAP file:
+
 ```bash
 uv run python pcap_analyzer.py path/to/your/capture.pcap
 ```
